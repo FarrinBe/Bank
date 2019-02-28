@@ -1,0 +1,60 @@
+import os
+
+def dispBal(bal):
+  os.system('cls')
+  os.system('pause')
+  os.system('cls')
+
+  print "Account Balance:\n$", bal
+
+def Deposit(bal, trans):
+  os.system('cls')
+  add = int(input("Enter deposit amount:"))
+  bal += add
+  trans += 1
+  os.system('cls')
+  return bal, trans
+
+def Withdraw(bal, trans):
+  os.system('cls')
+  minus = int(input("Enter withdraw amount:"))
+  if minus<=bal:
+    bal -= minus
+    trans += 1
+  else:
+    print "Insufficient Funds"
+  os.system('cls')
+  return bal, trans
+  
+
+def main():
+  balance = 0
+  trans = 0
+  while(True):
+    print("\n  Benjamin's Bank  ")
+    print("    1. Balance Inquiry\n    2. Deposit\n    3. Withdraw\n    4. Transactions\n    5. Exit")
+    menu_choice = int(input());
+    
+    for x in range(4):
+      if menu_choice==1:
+        dispBal(balance)
+        break
+      elif menu_choice==2:
+        balance, trans = Deposit(balance, trans)
+        break
+      elif menu_choice==3:
+        balance, trans = Withdraw(balance, trans)
+        break
+      elif menu_choice==4:
+        os.system('cls')
+        print "Transactions amount: ", trans
+        break
+      elif menu_choice==5:
+        print "Thank you for using our system"
+        quit()
+      else:
+        print("Invalid Choice")
+        continue
+  
+if __name__=="__main__":
+  main()
